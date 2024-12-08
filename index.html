@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página para Copiar Enlace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Copiar Enlace</h1>
+        <p class="descripcion">Haz clic en el botón para copiar el enlace al portapapeles y verlo aquí.</p>
+        <button id="copiarEnlaceBtn" class="boton">Copiar Enlace</button>
+        <p id="mensaje" style="margin-top: 10px; color: #7cff7c; font-weight: bold;"></p>
+        <div id="enlaceMostrado" class="enlace"></div> <!-- Aquí se mostrará el enlace copiado -->
+    </div>
+
+    <script>
+        // Al hacer clic en el botón, copiar el enlace al portapapeles y mostrarlo
+        document.getElementById('copiarEnlaceBtn').addEventListener('click', function() {
+            const enlace = "http://play.steeltv.org:8080/get.php?username=MGgMBQ645QTB&password=kfnhpBSkUwLe&type=m3u_plus";
+            
+            // Crear un elemento input temporal para copiar el enlace
+            const input = document.createElement('input');
+            input.value = enlace;
+            document.body.appendChild(input);
+
+            // Seleccionar y copiar el texto del input
+            input.select();
+            document.execCommand('copy');
+
+            // Eliminar el input temporal
+            document.body.removeChild(input);
+
+            // Mostrar el mensaje de éxito
+            document.getElementById('mensaje').innerText = "Enlace copiado al portapapeles!";
+
+            // Mostrar el enlace copiado en la página
+            document.getElementById('enlaceMostrado').innerText = enlace;
+        });
+    </script>
+</body>
+</html>
